@@ -18,6 +18,7 @@ class MarkerDetails extends Component {
 	  placeId: PropTypes.string.isRequired,
 	  placePos: PropTypes.object.isRequired,
 	  onToggleOpen: PropTypes.func.isRequired,
+	  showInfoId: PropTypes.string.isRequired,
 	  action: PropTypes.string.isRequired
 	};
 
@@ -57,29 +58,28 @@ class MarkerDetails extends Component {
 		          {
 		            error ? <Error message="There was an error while fetching this place's data. Please try again later." />
 		            : <div className="details-place" tabIndex="0" key={placeId}>
-		              <h3 className="details-title">
-		                <a href={placeDetails.canonicalUrl}>{placeDetails.name}</a>
-		              </h3>
-		              <p className="details-address">{placeDetails.location.address || 'Address not found'}</p>
-		              <div
-		                className="details-rating"
-		                title={`The rating is ${placeDetails.rating}`}
-		              >
-		                <span className="rating-number" aria-hidden="true">{placeDetails.rating}</span>
-		              </div>
-		              <div className="details-price" title={`The price is ${placeDetails.price.message}`}>
-		                <span aria-hidden="true">{placeDetails.attributes.groups['0'].summary}</span>
-		              </div>
-		              <div className="details-category">
-		                {
-		                  placeDetails.categories.map(category =>
-		                    <span key={category.id} className="category-pill">{category.name} </span>
-		                  )
-		                }
-		              </div>
-		              <div className="details-img">
-		                <img src={`${placeDetails.bestPhoto.prefix}width150${placeDetails.bestPhoto.suffix}`} alt={`Best of ${placeDetails.name}`} />
-		              </div>
+		              	<h3 className="details-title">
+		                	<a href={placeDetails.canonicalUrl}>{placeDetails.name}</a>
+		             	 </h3>
+		              	<p className="details-address">{placeDetails.location.address || 'Address not found'}</p>
+		             	<div className="info">
+			              	<div className="details-category">
+			                {
+			                  placeDetails.categories.map(category =>
+			                    <span key={category.id} className="category-pill">{category.name} </span>
+			                  )
+			                }
+			              </div>
+			              <div
+			                className="details-rating"
+			                title={`The rating is ${placeDetails.rating}`}
+			              >
+			                <span className="rating-number" aria-hidden="true">{placeDetails.rating}</span>
+			              </div>
+			            </div>
+		              	<div className="details-img">
+		                	<img src={`${placeDetails.bestPhoto.prefix}width150${placeDetails.bestPhoto.suffix}`} alt={`Best of ${placeDetails.name}`} />
+		              	</div>
 		            </div>
 		          }
 		          </InfoWindow>
