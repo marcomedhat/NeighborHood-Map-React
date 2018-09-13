@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Map from './Map'
+import Search from './Search';
 import PlacesData from './PlacesData.json';
+import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by';
 
 class App extends Component {
   state = {
     places: [],
     showingPlaces: [],
     query: '',
-    center: { lat: 30.054706, lng:31.237517 },
+    center: { lat: 33.6795758, lng:-7.4114479 },
     showInfoId: false,
     loaded: false,
     action: ''
@@ -24,25 +26,69 @@ class App extends Component {
     loaded: true
   });
 }
-  render() {
-    const {locations} = this.props
+  
+/**
+  * @description Toggle maker's infowindow open
+  * @param {string} id - The marker's place ID
+  * @param {string} action - Type of action fired (open or close)
+  */
+ onToggleOpen = (id, action) => {
+  this.setState({
+    showInfoId: id,
+    action
+  });
+}
 
+/**
+  * @description Filter places to show
+  * @param {string} query - The search query
+  */
+ filterPlaces = (query) => {
+  const { places } = this.state;
+  let showingPlaces;
+
+  // update query in state
+  this.setState({
+    query: query.trim()
+  });
+
+  // filter places to show based on query
+  if (query) {
+    const match = new RegExp(escapeRegExp(query), 'i');
+    showingPlaces = places.filter(place => match.test(place.name));
+  } else {
+    showingPlaces = places;
+  }
+
+  // sort places to show by place name
+  showingPlaces.sort(sortBy('name'));
+
+  // update places to show in state
+  this.setState({ showingPlaces });
+}
+  render() {
     return (
       <div className="App">
         <div className="header">
-          <h1>App</h1>
+          <h1>Neighborhood Map</h1>
         </div>
-        <div className="container">
-          <div className="sidebar">
-            <p>Search</p>
-          </div>
+        <div className="container">    
+          <Search
+            data={this.state}
+            onToggleOpen={this.onToggleOpen}
+            filterPlaces={this.filterPlaces}
+          />
           <div className="map">
             <Map
+              onToggleOpen={this.onToggleOpen}
+              showInfoId={this.state.showInfoId}
+              action={this.state.action}
               places={this.state.places}
-              googleMapURL={`http://maps.googleapis.com/maps/api/js?key=AIzaSyAVPMaMM5I8Xq3CfJ3Kg1sgG2vcsYQ_ON4&v=3.exp&libraries=geometry,drawing,places`}
+              showingPlaces={this.state.showingPlaces}
+              containerElement={<main className="map" role="application" tabIndex="0" style={{height:`100%`, width:`100%`}}></main>}
+              mapElement={<div style={{ height: `100%` }}></div>}
               loadingElement={<div style={{height:`100%`}}/>}
-              containerElement={<div style={{height:`100%`, width:`100%`}}/>}
-              mapElement={<div style={{height:`100%`}}/>}
+              googleMapURL={`http://maps.googleapis.com/maps/api/js?key=AIzaSyAVPMaMM5I8Xq3CfJ3Kg1sgG2vcsYQ_ON4&v=3.exp&libraries=geometry,drawing,places`}
             />
           </div>
         </div>
