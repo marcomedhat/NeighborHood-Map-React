@@ -12,7 +12,7 @@ class App extends Component {
     showingPlaces: [],
     query: '',
     center: { lat: 33.6795758, lng:-7.4114479 },
-    showInfoId: false,
+    showInfoId: '',
     loaded: false,
     action: '',
   }
