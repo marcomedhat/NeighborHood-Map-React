@@ -14,8 +14,9 @@ class App extends Component {
     center: { lat: 33.6795758, lng:-7.4114479 },
     showInfoId: false,
     loaded: false,
-    action: ''
+    action: '',
   }
+
 /**
   * @description Load initial data
   */
@@ -72,12 +73,14 @@ class App extends Component {
         <div className="header">
           <h1>Neighborhood Map</h1>
         </div>
-        <div className="container">    
-          <Search
-            data={this.state}
-            onToggleOpen={this.onToggleOpen}
-            filterPlaces={this.filterPlaces}
-          />
+        <div className="container">
+          <div className="sidebar">  
+            <Search
+              data={this.state}
+              onToggleOpen={this.onToggleOpen}
+              filterPlaces={this.filterPlaces}
+            />
+          </div>
           <div className="map">
             <Map
               onToggleOpen={this.onToggleOpen}

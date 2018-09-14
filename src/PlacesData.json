@@ -1,10 +1,42 @@
 [
   {
-    "id":"50b66a3de4b0e3ad3b6e9cbd",
-    "name":"El Duplex | Abla Fahita",
-    "position":{
-      "lat":30.0489545204741,
-      "lng":31.239013638544545
-    }
-  }
+		"id":"50b66a3de4b0e3ad3b6e9cbd",
+		"name":"El Duplex | Abla Fahita",
+		"position":{
+			"lat":30.0489545204741,
+			"lng":31.239013638544545
+		}
+	},
+	{
+		"id":"4bcf68e70ffdce72b771b2c0",
+		"name":"Windsor Hotel Cairo",
+		"position":{
+			"lat":30.05360230901397,
+			"lng":31.245592620786017
+		}
+	},
+	{
+		"id":"56c4a33fcd10ff1b7c97970e",
+		"name":"Bab Al Sharq",
+		"position":{
+			"lat":30.046303955891542,
+			"lng":31.232971091161655
+		}
+	},
+	{
+		"id":"4d95ae1d2bd6f04d431b2350",
+		"name":"Marriott Gardens",
+		"position":{
+			"lat":30.057039248571854,
+			"lng":31.224651128573708
+		}
+	},
+	{
+		"id":"4fc765d7e4b0824ae3ad6585",
+		"name":"Nile City Boat",
+		"position":{
+			"lat":30.04832854397746,
+			"lng":31.228682097365123
+		}
+	}
 ]

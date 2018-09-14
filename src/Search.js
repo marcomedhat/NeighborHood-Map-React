@@ -8,7 +8,7 @@ const Search = ({ data, filterPlaces, onToggleOpen }) => {
 
   return (
 
-    <div className="sidebar">
+    <div className="search-container">
 
       <h2 className="filter-title" tabIndex="0">
         Filter Search
