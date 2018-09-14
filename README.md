@@ -10,6 +10,9 @@ Some articles that helped me using Google Maps API with ReactJS :
 - https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
 - https://medium.com/@morgannegagne/google-maps-with-react-951c12b723ad
 
+***NOTE:*** *The service workers for this app will only works in the production build, but we are using React in 
+development mode.
+
 ## How to run the project in Development Mode
 The project uses [Node.js >= 6.x](https://nodejs.org/en/) and the [Create-React-App starter code](https://github.com/facebookincubator/create-react-app).
 
