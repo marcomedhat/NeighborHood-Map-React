@@ -1,8 +1,8 @@
 const api = 'https://api.foursquare.com/v2/venues/';
 const version = '20180411';
 const lang = 'en';
-const clientId = 'ODQMNY5FDQMREIKMDWL1OZI2L52TLTRNVJX0HISD1Y5NLSAV';
-const clientSecret = 'TRPVEKGCJQUM3LALNDL4G0FIIIAUGVC4BP3IHZRBPB4CGBF0';
+const clientId = '5C2B3I0ECECVJL150KLXOBWFH5GYMSHHLXHLF2SQDTO1YR5D';
+const clientSecret = 'ZELI3XHDVO0MHDDR0XFSFARYBG0IKEBBSBJBQHGUOP4JQAQB';
 
 export const getDetails = (id) =>
   fetch(`${api}${id}?client_id=${clientId}&client_secret=${clientSecret}&v=${version}&locale=${lang}`)
