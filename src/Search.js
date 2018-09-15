@@ -34,6 +34,7 @@ const Search = ({ data, filterPlaces, onToggleOpen }) => {
                 key={place.id}
                 className="result-item"
                 tabIndex="0"
+                onClick={() => onToggleOpen(place.id, 'open')}
               >
                 {place.name}
               </li>

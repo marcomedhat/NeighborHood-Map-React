@@ -7,7 +7,7 @@ import MapStyles from './mapStyles.json';
 
 const Map = compose(withScriptjs, withGoogleMap)(props => 
 	<GoogleMap
-		defaultZoom={15}
+		defaultZoom={13}
 		defaultOptions={{ styles: MapStyles }}
 		center={{lat: 30.054706, lng: 31.237517}} 
 	>

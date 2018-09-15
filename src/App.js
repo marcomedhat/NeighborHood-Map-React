@@ -75,14 +75,7 @@ class App extends Component {
           <h1>Neighborhood Map</h1>
         </div>
         <div className="container">
-          <div className="sidebar">  
-            <Search
-              data={this.state}
-              onToggleOpen={this.onToggleOpen}
-              filterPlaces={this.filterPlaces}
-            />
-          </div>
-          <div className="map">
+        <div className="map">
             <Map
               onToggleOpen={this.onToggleOpen}
               showInfoId={this.state.showInfoId}
@@ -90,12 +83,18 @@ class App extends Component {
               places={this.state.places}
               showingPlaces={this.state.showingPlaces}
               containerElement={<main className="map" role="application" tabIndex="0" style={{height:`100%`, width:`100%`}}></main>}
-              mapElement={<div style={{ height: `100%` }}></div>}
+              mapElement={<div style={{ height: `100%`, width:`100%` }}></div>}
               loadingElement={<Error message={'There was an error while loading the Google Maps scripts. Please try again later.'} />}
               googleMapURL={`http://maps.googleapis.com/maps/api/js?key=AIzaSyAVPMaMM5I8Xq3CfJ3Kg1sgG2vcsYQ_ON4&v=3.exp&libraries=geometry,drawing,places`}
             />
           </div>
-        
+          <div className="sidebar">  
+            <Search
+              data={this.state}
+              onToggleOpen={this.onToggleOpen}
+              filterPlaces={this.filterPlaces}
+            />
+          </div>
         </div>
       </div>
     );
