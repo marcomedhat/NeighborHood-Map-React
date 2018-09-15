@@ -65,7 +65,7 @@ class MarkerDetails extends Component {
 		            onCloseClick={() => onToggleOpen(placeId, 'close')}
 		          >
 		          {
-		             <div className="details-place" tabIndex="0" key={placeId}>
+		             <div className="details-place" tabIndex="0" key={placeId} role="dialog">
 		              	<h3 className="details-title">
 		                	<a href={placeDetails.canonicalUrl}>{placeDetails.name}</a>
 		             	 </h3>

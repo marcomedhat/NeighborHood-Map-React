@@ -71,11 +71,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header">
-          <h1>Neighborhood Map</h1>
-        </div>
-        <div className="container">
-        <div className="map">
+        <header className="header" role="banner">
+          <h1 role="heading">Neighborhood Map</h1>
+        </header>
+        <main className="container" role="main">
+          <article className="map">
             <Map
               onToggleOpen={this.onToggleOpen}
               showInfoId={this.state.showInfoId}
@@ -87,15 +87,15 @@ class App extends Component {
               loadingElement={<Error message={'There was an error while loading the Google Maps scripts. Please try again later.'} />}
               googleMapURL={`http://maps.googleapis.com/maps/api/js?key=AIzaSyAVPMaMM5I8Xq3CfJ3Kg1sgG2vcsYQ_ON4&v=3.exp&libraries=geometry,drawing,places`}
             />
-          </div>
-          <div className="sidebar">  
+          </article>
+          <article className="sidebar">  
             <Search
               data={this.state}
               onToggleOpen={this.onToggleOpen}
               filterPlaces={this.filterPlaces}
             />
-          </div>
-        </div>
+          </article>
+        </main>
       </div>
     );
   }

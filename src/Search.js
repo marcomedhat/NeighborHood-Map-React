@@ -8,12 +8,12 @@ const Search = ({ data, filterPlaces, onToggleOpen }) => {
 
   return (
 
-    <div className="search-container">
+    <section className="search-container">
 
       <h2 className="filter-title" tabIndex="0">
         Filter Search
       </h2>
-      <div className="input-wrapper">
+      <aside className="input-wrapper">
         <Debounce time="300" handler="onChange">
           <input
             type="text"
@@ -22,12 +22,12 @@ const Search = ({ data, filterPlaces, onToggleOpen }) => {
             onChange={e => filterPlaces(e.target.value)}
           />
         </Debounce>
-      </div>
-      <div className="results">
+      </aside>
+      <aside className="results">
         <p className="results-summary">
           Showing <strong>{showingPlaces.length}</strong> of <strong>{places.length}</strong> places.
         </p>
-        <ul className="results-list" tabIndex="0">
+        <ul className="results-list" tabIndex="0" role="list">
           {
             showingPlaces.map(place =>
               <li
@@ -41,8 +41,8 @@ const Search = ({ data, filterPlaces, onToggleOpen }) => {
             )
           }
         </ul>
-      </div>
-    </div>
+      </aside>
+    </section>
   )
 };
 
