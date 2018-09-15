@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import {Marker, InfoWindow} from 'react-google-maps';
 import {getDetails} from './FoursquareAPI'
 import PropTypes from 'prop-types';
-import Error from './Error';
 
 
 class MarkerDetails extends Component {
@@ -26,13 +25,16 @@ class MarkerDetails extends Component {
 	componentDidMount() {
 		const placeId = this.props.placeId;
 
+	    
+
 	    getDetails(placeId)
 	      .then(placeDetails => {
-	        this.setState({ placeDetails, loaded: true })
-	      })
-	      .catch(err => {
-	        console.log('Foursquare API returned with ', err);
-	        this.setState({ error: true });
+	      	if (placeDetails) {
+	      		this.setState({ placeDetails, loaded: true })
+	      	} else {
+	        	this.setState({ error: true });
+	      	}
+	        
 	      });
 	}
 
@@ -46,7 +48,14 @@ class MarkerDetails extends Component {
 				key={placeId}
 				position={placePos}
 				animation={google.maps.Animation.DROP}
-				onClick={() => onToggleOpen(placeId, 'open')}
+				onClick={() => {
+					if(!error) {
+						onToggleOpen(placeId, 'open');
+					} else {
+						alert('Oh No! There was an erroe fetching location details from Foursquare API');
+					}
+					
+				}}
 		    >
 		    	{
 		          (showInfoId === placeId && loaded === true && action === 'open') &&
@@ -56,8 +65,7 @@ class MarkerDetails extends Component {
 		            onCloseClick={() => onToggleOpen(placeId, 'close')}
 		          >
 		          {
-		            error ? <Error message="There was an error while fetching this place's data. Please try again later." />
-		            : <div className="details-place" tabIndex="0" key={placeId}>
+		             <div className="details-place" tabIndex="0" key={placeId}>
 		              	<h3 className="details-title">
 		                	<a href={placeDetails.canonicalUrl}>{placeDetails.name}</a>
 		             	 </h3>

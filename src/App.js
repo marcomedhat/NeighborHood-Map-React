@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './Map'
 import Search from './Search';
+import Error from './Error';
 import PlacesData from './PlacesData.json';
 import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
@@ -90,10 +91,11 @@ class App extends Component {
               showingPlaces={this.state.showingPlaces}
               containerElement={<main className="map" role="application" tabIndex="0" style={{height:`100%`, width:`100%`}}></main>}
               mapElement={<div style={{ height: `100%` }}></div>}
-              loadingElement={<div style={{height:`100%`}}/>}
+              loadingElement={<Error message={'There was an error while loading the Google Maps scripts. Please try again later.'} />}
               googleMapURL={`http://maps.googleapis.com/maps/api/js?key=AIzaSyAVPMaMM5I8Xq3CfJ3Kg1sgG2vcsYQ_ON4&v=3.exp&libraries=geometry,drawing,places`}
             />
           </div>
+        
         </div>
       </div>
     );

@@ -6,6 +6,13 @@ const clientSecret = 'ZELI3XHDVO0MHDDR0XFSFARYBG0IKEBBSBJBQHGUOP4JQAQB';
 
 export const getDetails = (id) =>
   fetch(`${api}${id}?client_id=${clientId}&client_secret=${clientSecret}&v=${version}&locale=${lang}`)
-    .then(res => res.json())
-    .then(data => data.response.venue)
-    .catch(err => console.log('Couldn\'t retrieve venue details with ', err))
+    .then(res => {
+    	if (res.ok) {
+      		return res.json();
+      	}
+    })
+    .then(data => {
+    	if(data) {
+    		return data.response.venue
+        }
+    })
