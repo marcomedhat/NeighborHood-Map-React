@@ -72,7 +72,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header" role="banner">
-          <h1 role="heading">Neighborhood Map</h1>
+          <h1>Neighborhood Map</h1>
         </header>
         <main className="container" role="main">
           <article className="map">

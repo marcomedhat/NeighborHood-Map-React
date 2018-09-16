@@ -27,7 +27,7 @@ const Search = ({ data, filterPlaces, onToggleOpen }) => {
         <p className="results-summary">
           Showing <strong>{showingPlaces.length}</strong> of <strong>{places.length}</strong> places.
         </p>
-        <ul className="results-list" tabIndex="0" role="list">
+        <ul className="results-list" tabIndex="0">
           {
             showingPlaces.map(place =>
               <li

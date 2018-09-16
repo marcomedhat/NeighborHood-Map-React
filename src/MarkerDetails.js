@@ -52,7 +52,7 @@ class MarkerDetails extends Component {
 					if(!error) {
 						onToggleOpen(placeId, 'open');
 					} else {
-						alert('Oh No! There was an erroe fetching location details from Foursquare API');
+						alert('Oh No! There was an error fetching location details from Foursquare API');
 					}
 					
 				}}
